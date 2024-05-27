@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import './App.css';
+import Myheader from './components/Myheader';
+import Mynav from './components/Mynav';
+import Myarticle from './components/Myarticle';
 /*
 function App() {
   return (
@@ -9,41 +12,9 @@ function App() {
   );
 }
 */
-class Myheader extends Component {  
-  render() {   
-    return (
-      <header>
-          <h1 class="logo">{this.props.title}</h1>
-          <p>{this.props.desc}</p>
-      </header>
-    )
-  }
-}
-class Mynav extends Component {
-  render() {
-    return (
-      <nav>
-        <ul>
-            <li><a href="">HTML</a></li>
-            <li><a href="">CSS</a></li>
-            <li><a href="">JavaScript</a></li>
-        </ul>
-      </nav>
-    )
-  }
-}
-class Myarticle extends Component {
-  render() {
-    return (
-      <section>
-        <article>
-              <h2>{this.props.title}</h2>
-              <p>{this.props.desc}</p>
-          </article>
-      </section>
-    )
-  }
-}
+
+
+
 class App extends Component {
   render() {
     return (
