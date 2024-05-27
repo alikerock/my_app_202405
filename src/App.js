@@ -47,27 +47,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <Myheader title={this.state.subject.title} desc={this.state.subject.desc}/> */}
-
-        <header>
-            <h1 className="logo">
-              {/* <a href="" onClick={function(e){
-                e.preventDefault();
-                this.setState({
-                  mode: 'welcome'
-                });
-              }.bind(this)}               */}
-              <a href="" onClick={(e)=>{
-                e.preventDefault();
-                this.setState({
-                  mode: 'welcome'
-                });
-              }}              
-              >{this.state.subject.title}</a>
-              </h1>
-            <p>{this.state.subject.desc}</p>
-        </header>
-
+        <Myheader title={this.state.subject.title} desc={this.state.subject.desc} onChangePage={()=>{
+          this.setState({mode:'welcome'})
+        }}/>
         <Mynav data={this.state.menus}/>
         <Myarticle title={_title} desc={_desc}/>
       </div>
