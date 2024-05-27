@@ -10,8 +10,7 @@ function App() {
 }
 */
 class Myheader extends Component {  
-  render() {
-    console.log(this);
+  render() {   
     return (
       <header>
           <h1 class="logo">{this.props.title}</h1>
