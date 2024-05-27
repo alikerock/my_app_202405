@@ -37,8 +37,8 @@ class Myarticle extends Component {
     return (
       <section>
         <article>
-              <h2>HTML</h2>
-              <p>Hypertext markup language</p>
+              <h2>{this.props.title}</h2>
+              <p>{this.props.desc}</p>
           </article>
       </section>
     )
@@ -49,8 +49,9 @@ class App extends Component {
     return (
       <div className="App">
         <Myheader title="React" desc="Single Page Application"/>
+
         <Mynav/>
-        <Myarticle/>
+        <Myarticle title="HTML" desc="Hypertext markup language"/>
       </div>
     )
   }
