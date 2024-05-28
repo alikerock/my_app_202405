@@ -2,8 +2,9 @@ import { Component,setState } from 'react';
 import './App.css';
 import Myheader from './components/Myheader';
 import Mynav from './components/Mynav';
-import Myarticle from './components/Myarticle';
+import ReadArticle from './components/ReadArticle';
 import Controls from './components/Controls';
+import CreateArticle from './components/CreateArticle';
 
 /*
 function App() {
@@ -39,10 +40,12 @@ class App extends Component {
 
   render() {
     console.log("App 실행");
-    let _title, _desc = null;
+    let _title, _desc, _article = null;
+
     if(this.state.mode === 'welcome'){
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _article = <ReadArticle title={_title} desc={_desc}/>
     }else if(this.state.mode === 'read'){
       let i=0;
       while(i<this.state.menus.length){
@@ -53,6 +56,9 @@ class App extends Component {
         }
         i++;
       }
+      _article = <ReadArticle title={_title} desc={_desc}/>
+    }else if(this.state.mode === 'create'){
+      _article = <CreateArticle/>
     }
 
     return (
@@ -67,11 +73,12 @@ class App extends Component {
             selected_id:Number(id)
           })
         }}/>
-        <Myarticle title={_title} desc={_desc}/>
+        
+        {_article}
         <hr/>
-        <Controls onChangeMode={()=>{
+        <Controls onChangeMode={(value)=>{
           this.setState({
-            mode:'create',
+            mode:value,
           })
         }}/>
       </div>

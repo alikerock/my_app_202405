@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-class Myarticle extends Component {
+class ReadArticle extends Component {
     render() {
       console.log("Myarticle 실행"); 
       return (
@@ -13,4 +13,4 @@ class Myarticle extends Component {
       )
     }
   }
-export default Myarticle;
+export default ReadArticle;
