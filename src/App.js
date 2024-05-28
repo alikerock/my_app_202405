@@ -3,6 +3,8 @@ import './App.css';
 import Myheader from './components/Myheader';
 import Mynav from './components/Mynav';
 import Myarticle from './components/Myarticle';
+import Controls from './components/controls';
+
 /*
 function App() {
   return (
@@ -66,6 +68,8 @@ class App extends Component {
           })
         }}/>
         <Myarticle title={_title} desc={_desc}/>
+        <hr/>
+        <Controls/>
       </div>
     )
   }
