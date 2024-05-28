@@ -7,8 +7,19 @@ class CreateArticle extends Component {
         <section>
           <article>
             <h2>Create Article</h2>
-            <form>
-              
+            <form method="post" onSubmit={(e)=>{
+              e.preventDefault();
+              // debugger;
+              this.props.onSubmit(e.target.title.value, e.target.desc.value);
+
+            }}>
+              <p>
+                <input type="text" name="title" placeholder="title"/>
+              </p>
+              <p>
+                <textarea name="desc" placeholder="description"></textarea>
+              </p>
+              <button type="submit">입력</button>
             </form>
           </article>
         </section>
