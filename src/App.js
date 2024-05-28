@@ -47,16 +47,8 @@ class App extends Component {
       _desc = this.state.welcome.desc;
       _article = <ReadArticle title={_title} desc={_desc}/>
     }else if(this.state.mode === 'read'){
-      let i=0;
-      while(i<this.state.menus.length){
-        let data = this.state.menus[i];
-        if(data.id === this.state.selected_id){
-          _title = data.title;
-          _desc = data.desc;
-        }
-        i++;
-      }
-      _article = <ReadArticle title={_title} desc={_desc}/>
+      let _data = this.getReadArticle();
+      _article = <ReadArticle title={_data.title} desc={_data.desc}/>
     }else if(this.state.mode === 'create'){
 
       _article = <CreateArticle onSubmit={(_title,_desc)=>{
@@ -78,22 +70,26 @@ class App extends Component {
       }} />
     }else if(this.state.mode === 'update'){
 
-      let i=0;
-      while(i<this.state.menus.length){
-        let data = this.state.menus[i];
-        if(data.id === this.state.selected_id){
-          _title = data.title;
-          _desc = data.desc;
-        }
-        i++;
-      }
-      _article = <UpdateArticle title={_title} desc={_desc} onSubmit={(_title,_desc)=>{
+      let _data = this.getReadArticle();
+
+      _article = <UpdateArticle data={_data} onSubmit={(_title,_desc)=>{
         // this.setState({
         //   menus:_menus
         // });
       }} />
     }
     return _article;
+  }
+  getReadArticle(){
+    let i=0;
+      while(i<this.state.menus.length){
+        let data = this.state.menus[i];
+        if(data.id === this.state.selected_id){
+          return data;
+          break;
+        }
+        i++;
+      }
   }
   render() {
     console.log("App 실행"); 

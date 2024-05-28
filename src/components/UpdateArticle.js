@@ -14,10 +14,10 @@ class UpdateArticle extends Component {
 
             }}>
               <p>
-                <input type="text" name="title" placeholder="title" value={this.props.title}/>
+                <input type="text" name="title" placeholder="title" value={this.props.data.title}/>
               </p>
               <p>
-                <textarea name="desc" placeholder="description">{this.props.desc}</textarea>
+                <textarea name="desc" placeholder="description">{this.props.data.desc}</textarea>
               </p>
               <button type="submit">입력</button>
             </form>
