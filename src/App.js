@@ -5,6 +5,7 @@ import Mynav from './components/Mynav';
 import ReadArticle from './components/ReadArticle';
 import Controls from './components/Controls';
 import CreateArticle from './components/CreateArticle';
+import UpdateArticle from './components/UpdateArticle';
 
 /*
 function App() {
@@ -38,9 +39,7 @@ class App extends Component {
       ]
     }
   }
-
-  render() {
-    console.log("App 실행");
+  getArticles(){
     let _title, _desc, _article = null;
 
     if(this.state.mode === 'welcome'){
@@ -77,7 +76,27 @@ class App extends Component {
           menus:_menus
         });
       }} />
+    }else if(this.state.mode === 'update'){
+
+      let i=0;
+      while(i<this.state.menus.length){
+        let data = this.state.menus[i];
+        if(data.id === this.state.selected_id){
+          _title = data.title;
+          _desc = data.desc;
+        }
+        i++;
+      }
+      _article = <UpdateArticle title={_title} desc={_desc} onSubmit={(_title,_desc)=>{
+        // this.setState({
+        //   menus:_menus
+        // });
+      }} />
     }
+    return _article;
+  }
+  render() {
+    console.log("App 실행"); 
 
     return (
       <div className="App">
@@ -92,7 +111,8 @@ class App extends Component {
           })
         }}/>
         
-        {_article}
+        {this.getArticles()}
+
         <hr/>
         <Controls onChangeMode={(value)=>{
           this.setState({
