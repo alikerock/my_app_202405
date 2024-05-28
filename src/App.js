@@ -72,10 +72,18 @@ class App extends Component {
 
       let _data = this.getReadArticle();
 
-      _article = <UpdateArticle data={_data} onSubmit={(_title,_desc)=>{
-        // this.setState({
-        //   menus:_menus
-        // });
+      _article = <UpdateArticle data={_data} onSubmit={(_id, _title,_desc)=>{
+        console.log(_id, _title,_desc);
+        let _menus = Array.from(this.state.menus);
+        _menus.forEach((item,index)=>{
+          if(item.id === _id){
+            _menus[index] = {id:_id, title:_title, desc:_desc}
+          }
+        });
+        this.setState({
+          menus:_menus,
+          mode:'read'
+        });
       }} />
     }
     return _article;
