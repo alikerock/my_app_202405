@@ -21,7 +21,7 @@ class App extends Component {
     super(props);
     this.max_id = 3;
     this.state = {      
-      mode:'create',
+      mode:'welcome',
       selected_id:2,
       subject:{
         title:'react',
