@@ -6,18 +6,12 @@ class ReadArticle extends Component {
       return (
         <section>
           <article>
+            
+            <h2>{this.props.title}</h2>
+            <p>{this.props.desc}</p>
             {
-              (this.props.level) ?
-            <>
-            <h2>{this.props.title}</h2>
-            <p>{this.props.desc}</p>
+              this.props.level &&
             <p>난이도: {this.props.level}</p>
-            </>
-            :
-            <>
-            <h2>{this.props.title}</h2>
-            <p>{this.props.desc}</p>
-            </>
             }
           </article>
           
