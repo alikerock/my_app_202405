@@ -7,6 +7,7 @@ class UpdateArticle extends Component {
       id:this.props.data.id,
       title:this.props.data.title,
       desc:this.props.data.desc,
+      level:this.props.data.level,
     }
   }
   inputFormHander(e){
@@ -27,7 +28,8 @@ class UpdateArticle extends Component {
               this.props.onSubmit(
                 this.state.id,
                 e.target.title.value, 
-                e.target.desc.value
+                e.target.desc.value,
+                e.target.level.value
               );
 
             }}>
@@ -52,6 +54,11 @@ class UpdateArticle extends Component {
                 }}
                 value={this.state.desc}              
                 ></textarea>
+              </p>
+              <p>
+                <input type="number" min="4" name="level" value={this.state.level}                   onChange={e=>{
+                    this.inputFormHander(e);
+                  }}/>
               </p>
               <button type="submit">입력</button>
             </form>

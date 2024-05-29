@@ -33,9 +33,9 @@ class App extends Component {
         desc:'Welcome to React'
       },
       menus:[
-        {id:1, title:'HTML', desc:'Hypertext markup language'},
-        {id:2, title:'CSS', desc:'CSS is for design'},
-        {id:3, title:'javascript', desc:'Javascript is for interaction'}
+        {id:1, title:'HTML', desc:'Hypertext markup language', level:1},
+        {id:2, title:'CSS', desc:'CSS is for design', level:2},
+        {id:3, title:'javascript', desc:'Javascript is for interaction', level:3}
       ]
     }
   }
@@ -48,14 +48,14 @@ class App extends Component {
       _article = <ReadArticle title={_title} desc={_desc}/>
     }else if(this.state.mode === 'read'){
       let _data = this.getReadArticle();
-      _article = <ReadArticle title={_data.title} desc={_data.desc} onChangeMode={(value)=>{
+      _article = <ReadArticle title={_data.title} desc={_data.desc} level={_data.level} onChangeMode={(value)=>{
         this.setState({
           mode:value,
         })
       }}/>
     }else if(this.state.mode === 'create'){
 
-      _article = <CreateArticle onSubmit={(_title,_desc)=>{
+      _article = <CreateArticle onSubmit={(_title,_desc,_level)=>{
         //this.max_id = this.max_id + 1;
         this.max_id += 1;
         // this.state.menus.push(
@@ -66,22 +66,24 @@ class App extends Component {
         // );
         let _menus = [...this.state.menus];
         _menus.push(
-            {id:this.max_id, title:_title, desc:_desc}
+            {id:this.max_id, title:_title, desc:_desc, level:_level}
           );
         this.setState({
-          menus:_menus
+          menus:_menus,
+          mode:'read',
+          selected_id:this.max_id
         });
       }} />
     }else if(this.state.mode === 'update'){
 
       let _data = this.getReadArticle();
 
-      _article = <UpdateArticle data={_data} onSubmit={(_id, _title,_desc)=>{
+      _article = <UpdateArticle data={_data} onSubmit={(_id, _title,_desc,_level)=>{
         console.log(_id, _title,_desc);
         let _menus = Array.from(this.state.menus);
         _menus.forEach((item,index)=>{
           if(item.id === _id){
-            _menus[index] = {id:_id, title:_title, desc:_desc}
+            _menus[index] = {id:_id, title:_title, desc:_desc, level:_level}
           }
         });
         this.setState({
